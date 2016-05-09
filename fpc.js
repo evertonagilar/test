@@ -70,30 +70,6 @@ var fpc = {
     	}
     },
     
-   	getJSON : function(url, params){
-	    return $.ajax({
-            url:  url,
-            data : params,
-            type: "GET",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            dataType: "json",
-            //timeout: 6500,
-            crossDomain: true,
-            success: function(msg) {
-				var doc = document;
-				if (msg.tipo === "erro" || msg.erro != undefined){
-					doc.body.style.cursor = "default"; 
-					var msg_erro = fpc.mensagem(msg.message, "erro");
-					throw new FpcError(JSON.stringify(msg.message), url, params);
-				}
-            },
-            error: function(xhr, textStatus, error) {
-		    	document.body.style.cursor = "default";
-				fpc.mensagem(error, "erro");
-				throw new FpcError(error, url, params);
-            }
-		});
-   	},
     
     fillComboboxFromArray : function(combobox, obj){
     	if (obj instanceof Array){
