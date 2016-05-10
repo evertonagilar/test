@@ -2072,18 +2072,4 @@ $.fn.dataTable.pipeline = function ( opts ) {
     }
 })(jQuery);
 
-/////////////////////  	ready  	///////////////////////
 
-$(this).ready(function(){
-  fpc.csrftoken = fpc.getCookie('csrftoken');
-  $(document).ajaxSend(function(event, xhr, settings) {
-        xhr.setRequestHeader("X-CSRFToken", fpc.csrftoken);
-        xhr.setRequestHeader("Accept", "application/json,application/zip");
-        xhr.setRequestHeader ("Authorization", "Basic " + btoa(fpc.username + ":" + fpc.password));
- 	});
-  System.config({
-    transpiler: 'typescript', 
-    typescriptOptions: { emitDecoratorMetadata: true }, 
-    packages: {'app': {defaultExtension: 'ts'}} 
-  });
-});
